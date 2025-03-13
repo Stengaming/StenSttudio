@@ -1,25 +1,494 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/x-icon" href="img/Ontwerp zonder titel.png">
-  <title>Sten Studio / Website Under construction!</title>
+ <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#818cf8',
+                        dark: '#0f172a'
+                    },
+                    animation: {
+                        'gradient': 'gradient 8s linear infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'spin-slow': 'spin 15s linear infinite',
+                    },
+                    keyframes: {
+                        gradient: {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(to right, #6366f1, #818cf8, #c084fc, #6366f1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradient 8s linear infinite;
+            background-size: 200% auto;
+        }
+        
+        .custom-shape-divider-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-border {
+            position: relative;
+            border-radius: 0.75rem;
+            background: linear-gradient(to right, #6366f1, #818cf8, #c084fc);
+            padding: 1px;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
 </head>
-<body>
-  <h1>Under construction</h1>
-  <div>
-      <p>Do you have any questions or problems? Chat with us below!</p>
-  </div>
+<body class="bg-dark text-gray-100 font-sans overflow-x-hidden">
+    <div class="fixed inset-0 -z-10">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.1),rgba(15,23,42,0))]"></div>
+        <div class="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-primary/5 to-transparent"></div>
+    </div>
+
+    <nav class="fixed w-full z-50 py-4 glass-effect">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center relative">
+                <a href="#" class="text-2xl font-bold gradient-text">Waikboi</a>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="group">
+                        <span class="relative">
+                            Home
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                        </span>
+                    </a>
+                    <a href="#about" class="group">
+                        <span class="relative">
+                            About
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                        </span>
+                    </a>
+                    <a href="#Skills" class="group">
+                        <span class="relative">
+                            Skills
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                        </span>
+                    </a>
+                    <a href="#projects" class="group">
+                        <span class="relative">
+                            Projects
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                        </span>
+                    </a>
+                    <a href="#servers" class="group">
+                        <span class="relative">
+                            Servers
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                        </span>
+                    </a>
+                </div>
+
+                <button id="menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-800">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
+                    </svg>
+                </button>
+
+                <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-dark glass-effect">
+                    <a href="#home" class="block px-4 py-2 text-gray-100 hover:bg-gray-800">
+                        Home
+                    </a>
+                    <a href="#about" class="block px-4 py-2 text-gray-100 hover:bg-gray-800">
+                        About
+                    </a>
+                    <a href="#Skills" class="block px-4 py-2 text-gray-100 hover:bg-gray-800">
+                        Skills
+                    </a>
+                    <a href="#projects" class="block px-4 py-2 text-gray-100 hover:bg-gray-800">
+                        Projects
+                    </a>
+                    <a href="#servers" class="block px-4 py-2 text-gray-100 hover:bg-gray-800">
+                        Servers
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+        <div class="absolute inset-0 -z-10">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.1),rgba(15,23,42,0))]"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
+            <div class="lg:w-1/2 text-center lg:text-left" data-aos="fade-right">
+                <h1 class="text-5xl lg:text-7xl font-bold mb-6">
+                    Hi, I'm <span class="gradient-text">Waike</span>
+                </h1>
+                <div class="text-xl lg:text-2xl text-gray-400 mb-8">
+                    I'm a <span id="typed-text"></span>
+                </div>
+                <p class="text-gray-400 mb-8 max-w-lg">
+                    <b>waikboi</b><br>
+                    Passionate about tech, driven by curiosity.
+                </p>
+                <div class="flex gap-4 justify-center lg:justify-start">
+                    <!-- <a href="#about" class="group relative px-6 py-3 overflow-hidden rounded-full bg-primary hover:bg-secondary transition-colors duration-300">
+                        <span class="relative z-10">About Me</span>
+                        <div class="absolute inset-0 bg-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                    </a> -->
+                    <a href="#about" class="group relative px-6 py-3 overflow-hidden rounded-full border border-primary text-primary hover:text-white transition-colors duration-300">
+                        <span class="relative z-10">About Me</span>
+                        <div class="absolute inset-0 bg-primary transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="lg:w-1/2 relative" data-aos="fade-left">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full animate-pulse"></div>
+                    <img src="your-photo.jpg" alt="Profile" class="w-64 h-64 lg:w-80 lg:h-80 rounded-full object-cover relative z-10 mx-auto animate-float">
+                </div>
+                <div class="absolute top-0 -left-10 w-20 h-20 bg-primary/20 rounded-full animate-float" style="animation-delay: 0.5s"></div>
+                <div class="absolute bottom-0 right-0 w-32 h-32 bg-secondary/20 rounded-full animate-float" style="animation-delay: 1s"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 relative">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text" data-aos="fade-up">About Me</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6" data-aos="fade-right">
+                    <p class="text-lg text-gray-300">
+                        Hey! I'm Waike
+
+                        I'm a Year 9 student in Australia with a strong passion for Cyber Security and ICT. I'm eager to learn, build my skills, and work towards a future career in the field.
+                    </p>
+                </div>
+                <div class="relative" data-aos="fade-left">
+                    <div class="gradient-border">
+                        <div class="bg-dark p-6 rounded-xl">
+                            <h3 class="text-2xl font-bold mb-4">My Journey</h3>
+                            <div class="space-y-4">
+                                <div class="flex gap-4">
+                                    <div class="w-2 bg-primary rounded relative">
+                                        <div class="absolute w-4 h-4 bg-primary rounded-full -left-1 top-0"></div>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">High School</h4>
+                                        <p class="text-gray-400">Year 9 (2025 - Current)</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="w-2 bg-primary rounded relative">
+                                        <div class="absolute w-4 h-4 bg-primary rounded-full -left-1 top-0"></div>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">Cyber Security Certificate</h4>
+                                        <p class="text-gray-400">The goal I strive to achieve.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="Skills" class="py-20 bg-gray-900/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-13 text-center gradient-text" data-aos="fade-up">Skills</h2><br><br>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="glass-effect p-6 rounded-xl text-center" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fab fa-python text-4xl text-primary mb-4"></i>
+                    <h3 class="font-bold mb-2">Python</h3>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-primary w-[75%] h-full rounded-full"></div>
+                    </div>
+                </div>
+                <div class="glass-effect p-6 rounded-xl text-center" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fab fa-js text-4xl text-primary mb-4"></i>
+                    <h3 class="font-bold mb-2">Javascript</h3>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-primary w-[5%] h-full rounded-full"></div>
+                    </div>
+                </div>
+                <div class="glass-effect p-6 rounded-xl text-center" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fab fa-h text-4xl text-primary mb-4"></i>
+                    <h3 class="font-bold mb-2">HTML</h3>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-primary w-[25%] h-full rounded-full"></div>
+                </div>
+            </div>
+            <div class="glass-effect p-6 rounded-xl text-center" data-aos="zoom-in" data-aos-delay="100">
+                <i class="fab fa-react text-4xl text-primary mb-4"></i>
+                <h3 class="font-bold mb-2">React</h3>
+                <div class="w-full bg-gray-700 rounded-full h-2">
+                    <div class="bg-primary w-[15%] h-full rounded-full"></div>
+        </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text pb-2" data-aos="fade-up">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- === Peutrons Helper Project Card === -->
+                <div class="group relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gradient-border">
+                        <div class="bg-dark rounded-xl overflow-hidden">
+                            <div class="relative overflow-hidden">
+                                <img src="/imgs/phelper.png" alt="Peutrons Helper" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Peutrons Helper</h3>
+                                <p class="text-gray-400 mb-4">A Discord bot I'm making for my friends server.</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-3 py-1 bg-red-500/20 text-red-700 border border-red-500/50 rounded-full text-sm">Private</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <a href="https://www.youtube.com/@Peutron" class="text-primary hover:text-secondary transition-colors">
+                                        <i class="fab fa-youtube text-xl"></i>
+                                    </a>
+                                    <a href="https://discord.gg/7wVYppAKrc" class="text-primary hover:text-secondary transition-colors">
+                                        <i class="fab fa-discord text-xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- === Peutrons Guard Card === -->
+                <div class="group relative" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gradient-border">
+                        <div class="bg-dark rounded-xl overflow-hidden">
+                            <div class="relative overflow-hidden">
+                                <img src="/imgs/pguard.png" alt="Peutrons Guard" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Peutrons Guard</h3>
+                                <p class="text-gray-400 mb-4">A Discord bot I'm making for my friends server.</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-3 py-1 bg-red-500/20 text-red-700 border border-red-500/50 rounded-full text-sm">Private</span>
+                                </div>
+                                <div class="flex gap-4">
+                                    <a href="https://www.youtube.com/@Peutron" class="text-primary hover:text-secondary transition-colors">
+                                        <i class="fab fa-youtube text-xl"></i>
+                                    </a>
+                                    <a href="https://discord.gg/7wVYppAKrc" class="text-primary hover:text-secondary transition-colors">
+                                        <i class="fab fa-discord text-xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+    
+            </div>
+        </div>
+    </section>
+
+    <section id="servers" class="py-20 bg-gray-900/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text pb-2" data-aos="fade-up">Supported Servers</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- === Peutrons Card === -->
+                <div class="group relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gradient-border">
+                        <div class="bg-dark rounded-xl overflow-hidden">
+                            <div class="p-6 flex items-center space-x-6">
+                                <!-- Image section -->
+                                <div class="w-24 h-24 rounded-lg overflow-hidden">
+                                    <img src="/imgs/peutronserver.png" alt="Peutrons" class="w-full h-full object-cover">
+                                </div>
+
+                                <!-- Text content section -->
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-bold mb-2">Peutrons</h3>
+                                    <p class="text-gray-400 mb-4">Peutrons is a Minecraft Youtuber community that resolves around maps and events.</p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="px-3 py-1 bg-primary/20 rounded-full text-sm">Youtube</span>
+                                        <span class="px-3 py-1 bg-primary/20 rounded-full text-sm">Minecraft</span>
+                                        <span class="px-3 py-1 bg-primary/20 rounded-full text-sm">Maps</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Social links section (vertical) -->
+                                <div class="flex flex-col gap-4 ml-4">
+                                    <a href="https://www.youtube.com/@Peutron" class="text-primary hover:text-secondary transition-colors">
+                                        <i class="fab fa-youtube text-xl"></i>
+                                    </a>
+                                    <a href="https://discord.gg/7wVYppAKrc" class="text-primary hover:text-secondary transition-colors">
+                                        <i class="fab fa-discord text-xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- === Maxos Squaaad Card === -->
+                <div class="group relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gradient-border">
+                        <div class="bg-dark rounded-xl overflow-hidden">
+                            <div class="p-6 flex items-center space-x-6">
+                                <!-- Image section -->
+                                <div class="w-24 h-24 rounded-lg overflow-hidden">
+                                    <img src="/imgs/maxosquad.png" alt="Maxo Squad" class="w-full h-full object-cover">
+                                </div>
+
+                                <!-- Text content section -->
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-bold mb-2">Maxos Squaaad</h3>
+                                    <p class="text-gray-400 mb-4">Maxos Squaaad is a Twitch streamer community of the streamer MaxoNitros.</p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="px-3 py-1 bg-primary/20 rounded-full text-sm">Twitch</span>
+                                        <span class="px-3 py-1 bg-primary/20 rounded-full text-sm">Community</span>
+                                        <span class="px-3 py-1 bg-primary/20 rounded-full text-sm">Games</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Social links section (vertical) -->
+                                <div class="flex flex-col gap-4 ml-4">
+                                    <a href="https://www.twitch.tv/maxonitros" class="text-primary hover:text-secondary transition-colors">
+                                        <i class="fab fa-twitch text-xl"></i>
+                                    </a>
+                                    <a href="https://discord.gg/snr9BbawmX" class="text-primary hover:text-secondary transition-colors">
+                                        <i class="fab fa-discord text-xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- === Cart's House Card === -->
+                <div class="group relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gradient-border">
+                        <div class="bg-dark rounded-xl overflow-hidden">
+                            <div class="p-6 flex items-center space-x-6">
+                                <!-- Image section -->
+                                <div class="w-24 h-24 rounded-lg overflow-hidden">
+                                    <img src="/imgs/cartshouse.png" alt="Maxo Squad" class="w-full h-full object-cover">
+                                </div>
+
+                                <!-- Text content section -->
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-bold mb-2">Cart's House</h3>
+                                    <p class="text-gray-400 mb-4">Cart's House is a Youtuber community of 2 youtubers Cart and Any.</p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="px-3 py-1 bg-primary/20 rounded-full text-sm">Youtube</span>
+                                        <span class="px-3 py-1 bg-primary/20 rounded-full text-sm">Roblox</span>
+                                        <span class="px-3 py-1 bg-primary/20 rounded-full text-sm">Community</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Social links section (vertical) -->
+                                <div class="flex flex-col gap-4 ml-4">
+                                    <a href="https://www.youtube.com/@CartWyd" class="text-primary hover:text-secondary transition-colors">
+                                        <i class="fab fa-youtube text-xl"></i>
+                                    </a>
+                                    <a href="https://discord.com/invite/RNRpG2hknX" class="text-primary hover:text-secondary transition-colors">
+                                        <i class="fab fa-discord text-xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/50 py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col items-center">
+                <a href="#" class="text-3xl font-bold gradient-text mb-6">Waikboi Developer</a>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="https://www.github.com/waikboidev" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://e-z.bio/waike" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                       <b>EZ</b>
+                    </a>
+                </div>
+                <p class="text-gray-400 text-center">© 2025 waikboidev. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        new Typed('#typed-text', {
+            strings: ['Beginner Programmer', 'Student', 'Problem Solver'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true
+        });
+
+
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16m-16 6h16');
+            } else {
+                menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.setAttribute('d', 'M4 6h16M4 12h16m-16 6h16');
+                }
+            }
+        });
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"91f95b68cf0296fd","version":"2025.1.0","r":1,"token":"07d93013c4414ad88c4809dbec65dbce","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
 </body>
-  
-  
-  
-  <div class="footer">
-        <div class="bot-footer">
-            Copyright © StenStudio - 2025
-    </div
-</div>
-  <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="1d25bfad-c0d0-445e-aab5-68c0f89b9a3d";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 </html>
