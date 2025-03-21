@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
    <head>
       <!-- basic -->
@@ -34,3 +34,195 @@
 
 <script src="https://justvikie.online/capybara.js"></script>
 <script src="https://justvikie.online/snow.js"></script>
+
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+      </div>
+      <!-- end loader -->
+      <!-- header -->
+      <header>
+         <!-- header inner -->
+         <div class="header">
+            <div class="container">
+               <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                     <div class="full">
+                        <div class="center-desk">
+                           <div class="logo">
+                              <a href="index.html"><img src="images/logo.png" alt="#" /></a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                     <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarsExample04">
+                           <ul class="navbar-nav mr-auto">
+                              <li class="nav-item active">
+                                 <a class="nav-link" href="#">Home</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="#"> About  </a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="#service"> Service</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="https://billing.justvikie.online/tickets/create">Contact</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="https://discord.gg/RudZNccKMg">Discord</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="domain.html">Domains</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="https://billing.justvikie.online">Sign Up</a>
+                              </li>
+                           </ul>
+                        </div>
+                     </nav>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </header>
+      <!-- end header inner -->
+      <!-- end header -->
+      <!-- banner -->
+      <section class="banner_main">
+         <div class="container">
+            <div class="row d_flex">
+               <div class="col-md-5">
+                  <div class="text-bg">
+                     <h1>JustVikie<br>Hosting</h1>
+                     <p>Hoge kwaliteit hosting voor de laagste prijs!</p>
+                     <a href="https://billing.justvikie.online">Naar billing</a>
+                  </div>
+               </div>
+               <div class="col-md-7">
+                  <div class="text-img">
+                     <figure><img src="images/img.png" /></figure>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- end banner -->
+      <!-- Services  -->
+      <div id="service" class="Services">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Best Services</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div class="Services-box">
+                     <i><img src="images/service1.png" alt="#" /></i>
+                     <h3>Minecraft hosting</h3>
+                     <p>Met onze krachtige minecraft hosting pakketen weet je zeker dat je de beste performance krijgt!</p>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div class="Services-box">
+                     <i><img src="images/service2.png" alt="#" /></i>
+                     <h3>Node.JS Hosting</h3>
+                     <p>Met onze krachtige node.js hosting pakketen weet je zeker dat je altijd online bent!</p>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div class="Services-box">
+                     <i><img src="images/service3.png" alt="#" /></i>
+                     <h3>Domain Registration</h3>
+                     <p>Registreer een domeinnaam bij ons en maak je website nog beter!</p>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div class="Services-box">
+                     <i><img src="images/service4.png" alt="#" /></i>
+                     <h3>Lavalink hosting</h3>
+                     <p>Met onze handige lavalink hosting kunnen je gebruikers altijd hoge kwaliteit muziek afspelen</p>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div class="Services-box">
+                     <i><img src="images/service5.png" alt="#" /></i>
+                     <h3>Rust hosting</h3>
+                     <p>Host jouw rust server bij ons en wij zorgen dat je de beste performance krijgt!</p>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div class="Services-box">
+                     <i><img src="images/service6.png" alt="#" /></i>
+                     <h3>Source engine hosting</h3>
+                     <p>Host servers voor populaire games zoals half life, Counter Strike en garry's mod!</p>
+                  </div>
+               </div>
+               <a class="read_more" href="https://billing.justvikie.online">Ga naar billing</a>
+            </div>
+         </div>
+      </div>
+      <!-- end Servicess -->
+      <!-- why -->
+      <div id="why" class="why">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Waarom JustVikie?</h2>
+                     <p>Hier zijn een paar redenen om JustVikie Hosting te kiezen</p>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div id="box_ho" class="why-box">
+                     <i><img src="images/why1.png" alt="#" /></i>
+                     <h3>Handig panel</h3>
+                     <p>Met ons handige panel kun je altijd makkelijk beginnen met uw hosting diensten!</p>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div class="why-box">
+                     <i><img src="images/why2.png" alt="#" /></i>
+                     <h3>Hoge kwaliteit</h3>
+                     <p>Wij gebruiken hoge kwaliteit hardware zodat u de beste ervaring krijgt!</p>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                  <div class="why-box">
+                     <i><img src="images/why3.png" alt="#" /></i>
+                     <h3>Lage prijzen</h3>
+                     <p>Met onze lage prijzen kan u een hoge kwaliteit server hosten zonder uw portomonnee leeg te maken!</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end why -->
+
+   <center>
+      <iframe src="https://status.justvikie.online/badge?theme=light" width="250" height="30" frameborder="0" scrolling="no"
+         style="color-scheme: normal"></iframe>
+   </center>
+      
+      <!-- Javascript files-->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
+      <script src="js/plugin.js"></script>
+      <!-- sidebar -->
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="js/custom.js"></script>
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+   </body>
+</html>
