@@ -40,7 +40,7 @@ function startSnowfall() {
 
     function createSnowflake() {
         const snowflake = document.createElement("img");
-        snowflake.src = "https://stenstudio.vercel.app/img/leafe.png"; // Pas aan met je eigen PNG
+        snowflake.src = "https://image.freepik.com/vrije-vector/prachtige-aquarel-herfstblad_1340-11470.jpg"; // Pas aan met je eigen PNG
         snowflake.style.position = "absolute";
         snowflake.style.width = Math.random() * 100 + 10 + "px";
         snowflake.style.top = "-50px";
