@@ -1,45 +1,56 @@
 <!DOCTYPE html>
 <html lang="nl">
-<head><link rel="stylesheet" href="style.css">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login dashboard</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
-            margin: 0;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            font-family: 'Poppins', sans-serif;
         }
         .container {
             background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
             text-align: center;
-            width: 300px;
+            width: 350px;
+        }
+        h2 {
+            color: #333;
         }
         input {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+        input:focus {
+            border-color: #667eea;
         }
         button {
             width: 100%;
-            padding: 10px;
-            background: #007bff;
+            padding: 12px;
+            background: #667eea;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
         }
-        .hidden {
-            display: none;
+        button:hover {
+            background: #764ba2;
         }
     </style>
 </head>
@@ -56,7 +67,14 @@
             let user = document.getElementById("login-user").value;
             let pass = document.getElementById("login-pass").value;
             
-            if (user === "admin" && pass === "1234") {
+            const users = {
+                "admin": "1234",
+                "user1": "abcd",
+                "user2": "pass123"
+            };
+            
+            if (users[user] && users[user] === pass) {
+                sessionStorage.setItem("loggedIn", true);
                 window.location.href = "/dashboard";
             } else {
                 alert("Ongeldige inloggegevens!");
