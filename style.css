@@ -9,3 +9,73 @@ body {
 h1 {
   font-size: 70px;
 }
+
+.subscription-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  padding: 20px;
+}
+
+.subscription-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.subscription-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.subscription-card {
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  text-align: center;
+  background-color: white;
+}
+
+.subscription-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.subscription-price {
+  font-size: 1.2rem;
+  color: #4b5563;
+  margin-bottom: 10px;
+}
+
+.subscription-features {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+.subscription-features li {
+  margin: 5px 0;
+}
+
+.subscription-button {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.subscription-button:disabled {
+  background-color: #d1d5db;
+  cursor: not-allowed;
+}
+
+.subscription-button:not(:disabled):hover {
+  background-color: #3b82f6;
+  color: white;
+}
