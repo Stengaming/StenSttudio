@@ -4,27 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-        <link rel="shortcut icon" href="Ontwerp zonder titel.png" type="image/Ontwerp zonder titel.png">
     <link rel="stylesheet" href="style.css">
-    <script>
-        // Controleer of de gebruiker is ingelogd
-        if (!sessionStorage.getItem("loggedIn")) {
-            window.location.href = "login";
-        }
-    </script>
 </head>
-<body>
-    <div class="container">
-        <h2>Welkom op het Dashboard</h2>
-        <p>Je bent succesvol ingelogd.</p>
-        <button onclick="logout()">Uitloggen</button>
+<body onload="checkLogin()">
+    <div class="sidebar">
+        <h2>Dashboard</h2>
+        <ul>
+            <li onclick="loadPage('home')">🏠 Home</li>
+            <li onclick="loadPage('profile')">👤 Profiel</li>
+            <li onclick="loadPage('settings')">⚙️ Instellingen</li>
+            <li onclick="logout()">🚪 Uitloggen</li>
+        </ul>
     </div>
-    
-    <script>
-        function logout() {
-            sessionStorage.removeItem("loggedIn");
-            window.location.href = "login";
-        }
-    </script>
+    <div class="content">
+        <div id="page-content">Welkom op het Dashboard!</div>
+    </div>
+
+    <script src="dashboard.js"></script>
 </body>
 </html>
