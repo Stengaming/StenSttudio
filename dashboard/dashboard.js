@@ -1,6 +1,6 @@
 function checkLogin() {
     if (!sessionStorage.getItem("loggedIn")) {
-        window.location.href = "login";
+        window.location.href = "login/";
     }
 }
 
@@ -10,5 +10,5 @@ function loadPage(page) {
 
 function logout() {
     sessionStorage.removeItem("loggedIn");
-    window.location.href = "login";
+    window.location.href = "login/";
 }
