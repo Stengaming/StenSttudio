@@ -16,58 +16,76 @@ h1 {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #f3f4f6;
-  padding: 20px;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  padding: 40px;
+  color: white;
 }
 
 .subscription-title {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .subscription-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  width: 100%;
+  max-width: 1000px;
 }
 
 .subscription-card {
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
   text-align: center;
-  background-color: white;
+  background: white;
+  color: #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.subscription-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
 .subscription-card-title {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .subscription-price {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: #4b5563;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  font-weight: 600;
 }
 
 .subscription-features {
   list-style: none;
   padding: 0;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .subscription-features li {
-  margin: 5px 0;
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #555;
 }
 
 .subscription-button {
   width: 100%;
-  padding: 10px;
-  font-size: 1rem;
-  border-radius: 8px;
+  padding: 12px;
+  font-size: 1.1rem;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+  border: none;
 }
 
 .subscription-button:disabled {
@@ -75,7 +93,13 @@ h1 {
   cursor: not-allowed;
 }
 
-.subscription-button:not(:disabled):hover {
-  background-color: #3b82f6;
+.subscription-button:not(:disabled) {
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
+  border: none;
+}
+
+.subscription-button:not(:disabled):hover {
+  background: linear-gradient(135deg, #5a67d8, #6b46c1);
+  transform: scale(1.05);
 }
