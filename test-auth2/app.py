@@ -5,9 +5,9 @@ from flask import Flask, redirect, request, render_template, url_for
 app = Flask(__name__)
 
 # Discord applicatie-instellingen
-CLIENT_ID = 'YOUR_CLIENT_ID'
-CLIENT_SECRET = 'YOUR_CLIENT_SECRET'
-REDIRECT_URI = 'http://localhost:5000/callback'
+CLIENT_ID = '1353411961395613796'
+CLIENT_SECRET = 'EFxsNvt3whbV9xvJNNC6Va_iFKsx4K5_'
+REDIRECT_URI = 'http://stenstudio.vercel.app/callback'
 SCOPE = 'identify'
 DISCORD_API_URL = 'https://discord.com/api/v10'
 
@@ -20,7 +20,7 @@ def home():
 @app.route('/login')
 def login():
     # Genereer de Discord OAuth2 URL
-    auth_url = f'https://discord.com/oauth2/authorize?client_id={CLIENT_ID}&redirect_uri={REDIRECT_URI}&response_type=code&scope={SCOPE}'
+    auth_url = f'https://discord.com/oauth2/authorize?client_id=1353411961395613796&response_type=code&redirect_uri=https%3A%2F%2Fstenstudio.vercel.app%2Ftest-auth2%2Fapp.py&scope=identify+guilds+email+activities.read+openid'
     return redirect(auth_url)
 
 # Callback route voor het ontvangen van de autorisatiecode
