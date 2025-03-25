@@ -3,94 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Portel</title>
+    <title>Login</title>
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Simpele validatie (kan vervangen worden met een echte backend-validatie)
+            if (username === 'admin' && password === '1234') {
+                sessionStorage.setItem('loggedIn1', 'true');
+                window.location.href = '/studio/menu'; // Aanpassen naar de gewenste startpagina
+            } else {
+                alert('Ongeldige gebruikersnaam of wachtwoord!');
+            }
+        }
+    </script>
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            flex-direction: column;
+            background: linear-gradient(to right, #D8BFD8, #87CEFA);
         }
-        .login-container {
+        .container {
             background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            width: 350px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
-        .login-container h2 {
-            margin-bottom: 20px;
-            color: #333;
-        }
-        .login-container input {
+        input {
+            display: block;
             width: 100%;
-            padding: 12px;
             margin: 10px 0;
-            border: none;
-            border-radius: 8px;
-            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
-        .login-container input:focus {
-            outline: none;
-            box-shadow: 0px 0px 5px #667eea;
-        }
-        .login-container button {
-            width: 100%;
-            padding: 12px;
-            background: #667eea;
+        button {
+            padding: 10px 15px;
             border: none;
-            color: white;
+            border-radius: 5px;
             font-size: 16px;
-            border-radius: 8px;
             cursor: pointer;
+            background-color: #007BFF;
+            color: white;
             transition: background 0.3s;
         }
-        .login-container button:hover {
-            background: #5640a0;
-        }
-        p {
-            margin-top: 15px;
-            color: white;
-            font-size: 14px;
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
-    <script>
-        const users = [
-            { username: "user1", password: "pass1" },
-            { username: "user2", password: "pass2" },
-            { username: "user3", password: "pass3" },
-            { username: "user4", password: "pass4" },
-            { username: "user5", password: "pass5" }
-        ];
-
-        function validateLogin(event) {
-            event.preventDefault();
-            let username = document.getElementById("username").value;
-            let password = document.getElementById("password").value;
-
-            let validUser = users.find(user => user.username === username && user.password === password);
-
-            if (validUser) {
-                alert("Login succesvol!");
-                window.location.href = "/studio/menu";
-            } else {
-                alert("Invalid username or password");
-            }
-        }
-    </script>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form onsubmit="validateLogin(event)">
-            <input type="text" id="username" name="username" placeholder="Username" required>
-            <input type="password" id="password" name="password" placeholder="Password" required>
-            <button type="submit">Inloggen</button>
-        </form>
+    <div class="container">
+        <h2>Inloggen</h2>
+        <input type="text" id="username" placeholder="Gebruikersnaam" required>
+        <input type="password" id="password" placeholder="Wachtwoord" required>
+        <button onclick="login()">Login</button>
     </div>
     <p> <a href="/plan" class="text-3xl font-bold gradient-text mb-6">No account? Then buy a plan!</a></p>
     <p> <a href="/" class="text-3xl font-bold gradient-text mb-6">HOME</a></p>
