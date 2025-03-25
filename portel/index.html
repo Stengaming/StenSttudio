@@ -3,59 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stenstudio login</title>
-        <style>
-        <body>
-    <div class="menu-container">
-        <h2>Login Menu</h2>
-        <button onclick="window.location.href='login'">Admin panel</button>
-        <button onclick="window.location.href='test-auth2/templates/home.html'">discord auth 2</button>
-    </div>
-</body>
-            body {
+    <title>stenstudio login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            flex-direction: column;
         }
-        .container {
+        .menu-container {
             background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            width: 350px;
-        }
-        h2 {
-            color: #333;
-        }
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 2px solid #ddd;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            font-size: 16px;
-            outline: none;
-            transition: 0.3s;
-        }
-        input:focus {
-            border-color: #667eea;
+            text-align: center;
         }
         button {
             width: 100%;
-            padding: 12px;
-            background: #667eea;
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #007bff;
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
-            transition: 0.3s;
         }
         button:hover {
-            background: #764ba2;
+            background-color: #0056b3;
         }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <h2>login Menu</h2>
+        <button onclick="window.location.href='login'">Admin panel</button>
+        <button onclick="window.location.href='error'">user login</button>
+
+    </div>
+
+    <script>
+        function buttonAction(option) {
+            alert(we zijn nog er mee bezig, dus sommige dingen werken niet!);
+        }
+    </script>
+</body>
 </html>
