@@ -6,15 +6,15 @@
     <title>Dashboard</title>
     <script>
         function checkLogin() {
-            if (!sessionStorage.getItem('loggedIn')) {
-                window.location.href = 'login.html';
+            if (!sessionStorage.getItem('loggedIn1')) {
+                window.location.href = '/studio/login';
             }
         }
         
         function logout() {
-            sessionStorage.removeItem('loggedIn');
+            sessionStorage.removeItem('loggedIn1');
             sessionStorage.removeItem('username');
-            window.location.href = 'login.html';
+            window.location.href = '/studio/login';
         }
         
         window.onload = checkLogin;
