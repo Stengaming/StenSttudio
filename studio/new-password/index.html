@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>welcome</title>
+    <script>
+        function checkLogin() {
+            if (!sessionStorage.getItem('loggedIn1')) {
+                window.location.href = '/studio/login';
+            }
+        }
+        
+        function submitForm(event) {
+            event.preventDefault(); // Voorkomt herladen van de pagina
+            const naam = document.getElementById('username').value;
+            const bericht = document.getElementById('password').value;
+            const email = 'ict.stenstudio.com@gmail.com';
+            
+            if (username && password) {
+                alert(`het kan een paar uur duren!`);
+            } else {
+                alert('Vul alle velden in!');
+            }
+        }
+        
+        window.onload = checkLogin;
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact Formulier</h1>
+        <form onsubmit="submitForm(event)">
+            <input type="text" id="naam" placeholder="username" required>
+            <textarea id="bericht" placeholder="new password" required></textarea>
+            <button type="submit">edit</button>
+        </form>
+    </div>
+</body>
+</html>
+
