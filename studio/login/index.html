@@ -5,16 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <script>
+        const users = {
+            'admin': '1234',
+            'user1': 'password1',
+            'user2': 'password2'
+        };
+
         function login() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             
-            // Simpele validatie (kan vervangen worden met een echte backend-validatie)
-            if (username === 'admin' && password === '1234') {
+            if (users[username] && users[username] === password) {
                 sessionStorage.setItem('loggedIn1', 'true');
-                window.location.href = '/studio/menu'; // Aanpassen naar de gewenste startpagina
+                sessionStorage.setItem('username', username);
+                window.location.href = '/studio/menu';
             } else {
-                alert('Ongeldige gebruikersnaam of wachtwoord!');
+                alert('Invalid username or password!');
             }
         }
     </script>
@@ -55,16 +61,21 @@
         button:hover {
             background-color: #0056b3;
         }
+        .note {
+            margin-top: 10px;
+            font-size: 14px;
+            color: gray;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Inloggen</h2>
-        <input type="text" id="username" placeholder="Gebruikersnaam" required>
-        <input type="password" id="password" placeholder="Wachtwoord" required>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
         <button onclick="login()">Login</button>
+        <p> <a href="/plan" class="text-3xl font-bold gradient-text mb-6">No account? Then buy a plan!</a></p>
+        <p> <a href="/" class="text-3xl font-bold gradient-text mb-6">HOME</a></p>
     </div>
-    <p> <a href="/plan" class="text-3xl font-bold gradient-text mb-6">No account? Then buy a plan!</a></p>
-    <p> <a href="/" class="text-3xl font-bold gradient-text mb-6">HOME</a></p>
 </body>
 </html>
