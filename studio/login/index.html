@@ -3,106 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <script>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        const users = {
-            'admin': '1234',
-            'kyan': 'signin123',
-            'user2': 'password2'
-        };
-
-        function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            if (users[username] && users[username] === password) {
-                sessionStorage.setItem('loggedIn1', 'true');
-                sessionStorage.setItem('username', username);
-                window.location.href = '/studio/menu';
-            } else {
-                alert('Invalid username or password!');
-            }
-        }
-    </script>
+    <title>Login Pagina</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -110,51 +11,71 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(to right, #6366f1, #818cf8);
+            margin: 0;
+            background: linear-gradient(135deg, #667eea, #764ba2);
         }
-        .container {
+        .login-container {
             background: white;
-            padding: 20px;
+            padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
         input {
-            display: block;
             width: 100%;
-            margin: 10px 0;
             padding: 10px;
+            margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
         button {
-            padding: 10px 15px;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
             border: none;
             border-radius: 5px;
-            font-size: 16px;
             cursor: pointer;
-            background-color: #0f172a;
-            color: black;
-            transition: background 0.3s;
+            font-size: 16px;
+            transition: background 0.3s ease;
         }
         button:hover {
-            background-color: #0f172a;
-        }
-        .note {
-            margin-top: 10px;
-            font-size: 14px;
-            color: gray;
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Inloggen</h2>
-        <input type="text" id="username" placeholder="Username" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <button onclick="login()">Login</button>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form onsubmit="return checkLogin()">
+            <input type="text" id="username" name="username" placeholder="Gebruikersnaam" required>
+            <input type="password" id="password" name="password" placeholder="Wachtwoord" required>
+            <button type="submit">Login</button>
         <p> <a href="/plan" class="text-3xl font-bold gradient-text mb-6">No account? Then buy a plan!</a></p>
         <p> <a href="/" class="text-3xl font-bold gradient-text mb-6">HOME</a></p>
+        </form>
     </div>
+
+    <script>
+        function checkLogin() {
+            const users = {
+                'gebruiker1': { password: 'wachtwoord1', redirect: '1test.html' },
+                'gebruiker2': { password: 'wachtwoord2', redirect: '2test.html' },
+                'gebruiker3': { password: 'wachtwoord3', redirect: '3test.html' }
+            };
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (users[username] && users[username].password === password) {
+                window.location.href = users[username].redirect;
+                return false;
+            } else {
+                alert('Ongeldige gebruikersnaam of wachtwoord');
+                return false;
+            }
+        }
+    </script>
 </body>
 </html>
+
