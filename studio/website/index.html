@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-        <script>
+    <script>
         function getCookie(name) {
             const cookies = document.cookie.split('; ');
             for (let cookie of cookies) {
@@ -14,19 +14,18 @@
             return null;
         }
 
+        // Functie die controleert of de gebruiker is ingelogd
         window.onload = function() {
-            if (!getCookie("loggedInUser1")) {
-                window.location.href = "/studio/login";
+            if (!getCookie("loggedInUser1")) { // Controleer of de cookie bestaat
+                window.location.href = "/studio/login"; // Verwijs door naar inlogpagina als gebruiker niet ingelogd is
             }
         };
-   
+
+        // Functie om de gebruiker uit te loggen
         function logout() {
-            sessionStorage.removeItem('loggedInUser1');
-            sessionStorage.removeItem('username');
-            window.location.href = '/studio/login';
+            document.cookie = "loggedInUser1=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/"; // Verwijder de cookie
+            window.location.href = '/studio/login'; // Verwijs de gebruiker naar de loginpagina
         }
-        
-        window.onload = checkLogin;
     </script>
     <style>
         body {
