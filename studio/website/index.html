@@ -4,15 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <script>
-        function checkLogin() {
-            if (!sessionStorage.getItem('loggedIn1')) {
-                window.location.href = '/studio/login';
+        <script>
+        function getCookie(name) {
+            const cookies = document.cookie.split('; ');
+            for (let cookie of cookies) {
+                let [key, value] = cookie.split('=');
+                if (key === name) return value;
             }
+            return null;
         }
-        
+
+        window.onload = function() {
+            if (!getCookie("loggedInUser1")) {
+                window.location.href = "/studio/login";
+            }
+        };
+   
         function logout() {
-            sessionStorage.removeItem('loggedIn1');
+            sessionStorage.removeItem('loggedInUser1');
             sessionStorage.removeItem('username');
             window.location.href = '/studio/login';
         }
