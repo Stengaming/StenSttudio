@@ -69,7 +69,7 @@
 
         function checkLogin() {
             const users = {
-                'gebruiker1': { password: 'wachtwoord1', redirect: '1test.html' },
+                'admin': { password: '1234', redirect: '/studio/menu' },
                 'gebruiker2': { password: 'wachtwoord2', redirect: '2test.html' },
                 'gebruiker3': { password: 'wachtwoord3', redirect: '3test.html' }
             };
@@ -78,7 +78,7 @@
             const password = document.getElementById('password').value;
 
             if (users[username] && users[username].password === password) {
-                setCookie("loggedInUser", username, 1);
+                setCookie("loggedInUser1", username, 1);
                 window.location.href = users[username].redirect;
                 return false;
             } else {
