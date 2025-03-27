@@ -12,13 +12,14 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background-color: #121212;
+            color: white;
         }
         .login-container {
-            background: white;
+            background: #1e1e1e;
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
             text-align: center;
         }
         input {
@@ -27,11 +28,13 @@
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
+            background-color: #333;
+            color: white;
         }
         button {
             width: 100%;
             padding: 10px;
-            background-color: #007BFF;
+            background-color: #444;
             color: white;
             border: none;
             border-radius: 5px;
@@ -40,7 +43,14 @@
             transition: background 0.3s ease;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #666;
+        }
+        a {
+            color: #bbb;
+            text-decoration: none;
+        }
+        a:hover {
+            color: white;
         }
     </style>
 </head>
@@ -51,8 +61,8 @@
             <input type="text" id="username" name="username" placeholder="Username" required>
             <input type="password" id="password" name="password" placeholder="Password" required>
             <button type="submit">Login</button>
-            <p> <a href="/plan" class="text-3xl font-bold gradient-text mb-6">No account? Then buy a plan!</a></p>
-        <p> <a href="/" class="text-3xl font-bold gradient-text mb-6">HOME</a></p>
+            <p><a href="/plan">No account? Then buy a plan!</a></p>
+            <p><a href="/">HOME</a></p>
         </form>
     </div>
 
@@ -67,37 +77,6 @@
             document.cookie = name + "=" + value + "; path=/" + expires;
         }
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 
 
 
@@ -136,33 +115,59 @@
 
 
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -216,4 +221,3 @@
     </script>
 </body>
 </html>
-
