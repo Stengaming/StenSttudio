@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecteer een Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #121212;
+            color: white;
+        }
+        .container {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            display: inline-block;
+        }
+        .btn {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #444;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #666;
+        }
+    </style>
+    <script>
+        function getCookie(name) {
+            const cookies = document.cookie.split('; ');
+            for (let cookie of cookies) {
+                let [key, value] = cookie.split('=');
+                if (key === name) return value;
+            }
+            return null;
+        }
+
+        window.onload = function() {
+            if (!getCookie("loggedInUser1")) {
+                window.location.href = "/studio/login";
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Selecteer een Website</h1>
+        <p>Je hebt meer dan één website. Kies welke je wilt bekijken:</p>
+        <a href="dashboard.html?site=?" class="btn">?</a>
+        <a href="dashboard.html?site=?" class="btn">?</a>
+    </div>
+</body>
+</html>
