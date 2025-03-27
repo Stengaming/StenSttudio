@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,33 +14,33 @@
             return null;
         }
 
-        // Functie die controleert of de gebruiker is ingelogd
+        // Function to check if the user is logged in
         window.onload = function() {
-            if (!getCookie("loggedInUser1")) { // Controleer of de cookie bestaat
-                window.location.href = "/studio/login"; // Verwijs door naar inlogpagina als gebruiker niet ingelogd is
+            if (!getCookie("loggedInUser1")) { // Check if the cookie exists
+                window.location.href = "/studio/login"; // Redirect to login page if user is not logged in
             }
         };
 
-        // Functie om de gebruiker uit te loggen
+        // Function to log out the user
         function logout() {
-            document.cookie = "loggedInUser1=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/"; // Verwijder de cookie
-            window.location.href = '/studio/login'; // Verwijs de gebruiker naar de loginpagina
+            document.cookie = "loggedInUser1=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/"; // Delete the cookie
+            window.location.href = '/studio/login'; // Redirect the user to the login page
         }
     </script>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
+            background-color: #121212;
             color: white;
             text-align: center;
             padding: 50px;
         }
         .container {
-            background: rgba(255, 255, 255, 0.1);
+            background: #1e1e1e;
             padding: 20px;
             border-radius: 10px;
             display: inline-block;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
         }
         h1 {
             font-size: 2em;
@@ -51,21 +51,23 @@
             border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
-            background-color: #ff4b5c;
+            background-color: #444;
             color: white;
             transition: background 0.3s;
             margin-top: 20px;
         }
         button:hover {
-            background-color: #c0392b;
+            background-color: #666;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welkom op je website Dashboard</h1>
-        <p>Je bent succesvol ingelogd, zo te zien ben je nog geen website! neem dan contact op!</p>
-        <button onclick="logout()">Uitloggen</button>
+        <h1>Welcome to Your Website Dashboard</h1>
+        <p>You are successfully logged in, but it looks like you don't have a website yet! Please contact us for assistance.</p>
+        <button onclick="logout()">Logout</button>
+        <br>
+        <button onclick="location.href='/contact'">Contact Us</button>
     </div>
 </body>
 </html>
