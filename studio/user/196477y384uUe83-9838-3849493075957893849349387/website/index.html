@@ -3,44 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home studio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            text-align: center;
-            color: white;
-        }
-        .container {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            color: black;
-        }
-        .button-container {
-            margin-top: 20px;
-        }
-        button {
-            padding: 10px 20px;
-            margin: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background 0.3s ease;
-            background-color: #007BFF;
-            color: white;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <title>Dashboard</title>
     <script>
         function getCookie(name) {
             const cookies = document.cookie.split('; ');
@@ -51,19 +14,58 @@
             return null;
         }
 
+        // Functie die controleert of de gebruiker is ingelogd
         window.onload = function() {
-            if (!getCookie("loggedInUser1")) {
-                window.location.href = "/studio/login";
+            if (!getCookie("loggedInUser1")) { // Controleer of de cookie bestaat
+                window.location.href = "/studio/login"; // Verwijs door naar inlogpagina als gebruiker niet ingelogd is
             }
         };
+
+        // Functie om de gebruiker uit te loggen
+        function logout() {
+            document.cookie = "loggedInUser1=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/"; // Verwijder de cookie
+            window.location.href = '/studio/login'; // Verwijs de gebruiker naar de loginpagina
+        }
     </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2em;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ff4b5c;
+            color: white;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #c0392b;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="button-container">
-            <button onclick="location.href='/studio/website'">Go to Website page</button>
-            <button onclick="location.href='/?'">Go to Discord page</button>
-        </div>
+        <h1>Welkom op je website Dashboard</h1>
+        <p>Je bent succesvol ingelogd, zo te zien ben je nog geen website! neem dan contact op!</p>
+        <button onclick="logout()">Uitloggen</button>
     </div>
 </body>
 </html>
