@@ -3,28 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Menu</title>
-    <script>
-        function isLoggedIn() {
-            return sessionStorage.getItem('loggedIn1') === 'true';
-        }
-
-        function checkLogin() {
-            if (!loggedInUser1()) {
-                window.location.href = '/studio/login';
-            }
-        }
-
-        function navigateTo(url) {
-            if (isLoggedIn()) {
-                window.location.href = url;
-            } else {
-                alert('pls sign in!');
-            }
-        }
-
-        window.onload = checkLogin;
-    </script>
+    <title>home studio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -32,35 +11,59 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(to right, #D8BFD8, #87CEFA);
+            margin: 0;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            text-align: center;
+            color: white;
         }
         .container {
             background: white;
-            padding: 20px;
+            padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            color: black;
+        }
+        .button-container {
+            margin-top: 20px;
         }
         button {
-            padding: 10px 15px;
+            padding: 10px 20px;
             margin: 10px;
             border: none;
             border-radius: 5px;
-            font-size: 16px;
             cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
             background-color: #007BFF;
             color: white;
-            transition: background 0.3s;
         }
         button:hover {
             background-color: #0056b3;
         }
     </style>
+    <script>
+        function getCookie(name) {
+            const cookies = document.cookie.split('; ');
+            for (let cookie of cookies) {
+                let [key, value] = cookie.split('=');
+                if (key === name) return value;
+            }
+            return null;
+        }
+
+        window.onload = function() {
+            if (!getCookie("loggedInUser1")) {
+                window.location.href = "/studio/login";
+            }
+        };
+    </script>
 </head>
 <body>
     <div class="container">
-        <button onclick="navigateTo('/studio/website')">Go to Website page</button>
-        <button onclick="navigateTo('/?')">Go to Discord page</button>
+        <div class="button-container">
+            <button onclick="location.href='/studio/website'">Go to Website page</button>
+            <button onclick="location.href='/?'">Go to Discord page</button>
+        </div>
     </div>
 </body>
 </html>
