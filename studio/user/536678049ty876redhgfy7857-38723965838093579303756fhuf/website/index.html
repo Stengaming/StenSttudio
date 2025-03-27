@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Status Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #121212;
+            color: white;
+        }
+        .container {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            display: inline-block;
+        }
+        .status {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #444;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #666;
+        }
+    </style>
+    <script>
+        function getCookie(name) {
+            const cookies = document.cookie.split('; ');
+            for (let cookie of cookies) {
+                let [key, value] = cookie.split('=');
+                if (key === name) return value;
+            }
+            return null;
+        }
+
+        window.onload = function() {
+            if (!getCookie("loggedInUser1")) {
+                window.location.href = "/studio/login";
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Website Status Dashboard</h1>
+        <p>Domain: <strong>https://finn-cam.vercel.app</strong></p>
+        <p class="status">looking!</p>
+        <a href="/contact" class="btn">Contact Us</a>
+        <br>
+        <a href="https://stenstudio.vercel.app" class="btn" target="_blank">go to the website</a>
+    </div>
+    
+    <script>
+        async function checkWebsiteStatus() {
+            const url = "https://finn-cam.vercel.app";
+            try {
+                const response = await fetch(url, { method: 'HEAD', mode: 'no-cors' });
+                document.querySelector('.status').textContent = "Online";
+                document.querySelector('.status').style.color = "green";
+            } catch (error) {
+                document.querySelector('.status').textContent = "Offline";
+                document.querySelector('.status').style.color = "red";
+            }
+        }
+        checkWebsiteStatus();
+    </script>
+</body>
+</html>
