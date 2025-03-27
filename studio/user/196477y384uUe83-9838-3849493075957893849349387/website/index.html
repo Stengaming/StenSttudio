@@ -1,71 +1,61 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <script>
-        function getCookie(name) {
-            const cookies = document.cookie.split('; ');
-            for (let cookie of cookies) {
-                let [key, value] = cookie.split('=');
-                if (key === name) return value;
-            }
-            return null;
-        }
+import { useState, useEffect } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { AlertCircle, CheckCircle, Loader } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-        // Functie die controleert of de gebruiker is ingelogd
-        window.onload = function() {
-            if (!getCookie("loggedInUser1")) { // Controleer of de cookie bestaat
-                window.location.href = "/studio/login"; // Verwijs door naar inlogpagina als gebruiker niet ingelogd is
-            }
-        };
+export default function Dashboard() {
+  const domain = "https://stenstudio.vercel.app";
+  const [status, setStatus] = useState("loading");
+  const [isLoggedIn, setIsLoggedIn] = useState(document.cookie.includes("loggedIn=true"));
 
-        // Functie om de gebruiker uit te loggen
-        function logout() {
-            document.cookie = "loggedInUser1=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/"; // Verwijder de cookie
-            window.location.href = '/studio/login'; // Verwijs de gebruiker naar de loginpagina
-        }
-    </script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            color: white;
-            text-align: center;
-            padding: 50px;
-        }
-        .container {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            display: inline-block;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            font-size: 2em;
-        }
-        button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #ff4b5c;
-            color: white;
-            transition: background 0.3s;
-            margin-top: 20px;
-        }
-        button:hover {
-            background-color: #c0392b;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Welkom op je website Dashboard</h1>
-        <p>Je bent succesvol ingelogd, zo te zien ben je nog geen website! neem dan contact op!</p>
-        <button onclick="logout()">Uitloggen</button>
+  useEffect(() => {
+    const checkWebsiteStatus = async () => {
+      try {
+        const response = await fetch(domain, { mode: "no-cors" });
+        setStatus(response ? "online" : "offline");
+      } catch {
+        setStatus("offline");
+      }
+    };
+
+    checkWebsiteStatus();
+  }, []);
+
+  const handleLogout = () => {
+    document.cookie = "loggedIn=false; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    setIsLoggedIn(false);
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white p-6">
+      <div className="max-w-lg w-full">
+        <h1 className="text-3xl font-bold text-center mb-6">Website Status Dashboard</h1>
+        <Card className="bg-gray-800 shadow-xl border border-gray-700">
+          <CardContent className="p-6 space-y-4">
+            <p className="text-lg font-medium text-gray-300">Domein: {domain}</p>
+            <div className="flex items-center space-x-2">
+              {status === "loading" ? (
+                <Loader className="animate-spin text-gray-400" />
+              ) : status === "online" ? (
+                <CheckCircle className="text-green-400" />
+              ) : (
+                <AlertCircle className="text-red-400" />
+              )}
+              <span className="text-gray-300">{status === "loading" ? "Controleren..." : `Website is ${status}`}</span>
+            </div>
+            <div className="text-center mt-4 space-y-2">
+              <Button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onClick={() => window.location.href = domain}>
+                Ga naar Website
+              </Button>
+              {isLoggedIn && (
+                <Button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded" onClick={handleLogout}>
+                  Uitloggen
+                </Button>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
-</body>
-</html>
+  );
+}
