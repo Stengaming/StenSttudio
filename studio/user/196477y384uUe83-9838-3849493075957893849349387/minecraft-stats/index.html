@@ -3,47 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found</title>
+    <title>Minecraft Server Stats</title>
     <style>
         body {
-            background-color: #121212;
+            background-image: url('https://th.bing.com/th/id/OIP.XnZ1y9DOVfGERW58sxLRZAHaD7?rs=1&pid=ImgDetMain'); /* Minecraft PvP Server Background */
+            background-size: cover;
+            background-position: center;
             color: white;
+            text-align: center;
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             height: 100vh;
-            text-align: center;
         }
-        .message {
-            background: #1e1e1e;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        h1 {
+            font-size: 50px;
         }
-        .btn {
-            padding: 10px 20px;
+        p {
             font-size: 18px;
-            background-color: #555;
+        }
+        .stats {
+            background-color: rgba(34, 34, 34, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .announcement {
+            background-color: rgba(68, 68, 68, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        button {
+            background-color: white;
+            color: black;
             border: none;
-            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
             cursor: pointer;
             margin-top: 20px;
-            color: white;
+            border-radius: 5px;
         }
-        .btn:hover {
-            background-color: #777;
+        button:hover {
+            background-color: grey;
         }
     </style>
+    <script>
+        async function fetchServerStats() {
+            const response = await fetch('https://api.mcsrvstat.us/2/nope12663.aternos.me');
+            const data = await response.json();
+            document.getElementById('server-ip').innerText = data.hostname || 'Unknown';
+            document.getElementById('players-online').innerText = data.players ? data.players.online : 0;
+            document.getElementById('server-status').innerText = data.online ? 'Online' : 'Offline';
+        }
+        window.onload = fetchServerStats;
+    </script>
 </head>
 <body>
-    <div class="message">
-        <h1>404 - Page Not Found</h1>
-        <p>We are currently working on this page. Please check back later.</p>
-        <button class="btn" onclick="window.location.href='/studio/user/196477y384uUe83-9838-3849493075957893849349387/menu'">Go Back Home</button>
+    <div class="announcement">Good news! We now support Minecraft Server Stats! 🚀</div>
+    <h1>Minecraft Server Stats</h1>
+    <div class="stats">
+        <p>Server IP: <span id="server-ip">Loading...</span></p>
+        <p>Players Online: <span id="players-online">0</span></p>
+        <p>Status: <span id="server-status">Loading...</span></p>
     </div>
+    <button onclick="fetchServerStats()">Refresh</button>
 </body>
 </html>
