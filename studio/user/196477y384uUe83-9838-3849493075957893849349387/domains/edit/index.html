@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found</title>
+    <title>Edit Domain</title>
     <style>
         body {
             background-color: #121212;
@@ -18,11 +18,12 @@
             height: 100vh;
             text-align: center;
         }
-        .message {
+        .container {
             background: #1e1e1e;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            width: 50%;
         }
         .btn {
             padding: 10px 20px;
@@ -37,13 +38,50 @@
         .btn:hover {
             background-color: #777;
         }
+        .form-group {
+            margin: 15px 0;
+            text-align: left;
+        }
+        label {
+            font-size: 16px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+        .message {
+            display: none;
+            color: #00ff00;
+            margin-top: 15px;
+            font-size: 18px;
+        }
     </style>
+    <script>
+        function showMessage(event) {
+            event.preventDefault();
+            document.getElementById('success-message').style.display = 'block';
+        }
+    </script>
 </head>
 <body>
-    <div class="message">
-        <h1>404 - Page Not Found</h1>
-        <p>We are currently working on this page. Please check back later.</p>
-        <button class="btn" onclick="window.location.href='/studio/user/196477y384uUe83-9838-3849493075957893849349387/domains'">Go Back Home</button>
+    <div class="container">
+        <h1>Edit Domain</h1>
+        <form onsubmit="showMessage(event)">
+            <div class="form-group">
+                <label for="domain-name">Domain Name:</label>
+                <input type="text" id="domain-name" name="domain-name" placeholder="Enter new domain name">
+            </div>
+            <div class="form-group">
+                <label for="domain-ip">Domain IP Address:</label>
+                <input type="text" id="domain-ip" name="domain-ip" placeholder="Enter new IP address">
+            </div>
+            <button class="btn" type="submit">Save Changes</button>
+        </form>
+        <p id="success-message" class="message">Your changes have been saved successfully!</p>
+        <button class="btn" onclick="window.location.href='index.html'">Go Back Home</button>
     </div>
 </body>
 </html>
