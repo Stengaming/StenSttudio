@@ -60,16 +60,29 @@
         }
     </style>
     <script>
-        function showMessage(event) {
+        function loadSavedData() {
+            document.getElementById('domain-name').value = localStorage.getItem('domain-name') || '';
+            document.getElementById('domain-ip').value = localStorage.getItem('domain-ip') || '';
+        }
+
+        function saveChanges(event) {
             event.preventDefault();
+            let domainName = document.getElementById('domain-name').value;
+            let domainIp = document.getElementById('domain-ip').value;
+
+            localStorage.setItem('domain-name', domainName);
+            localStorage.setItem('domain-ip', domainIp);
+
             document.getElementById('success-message').style.display = 'block';
         }
+
+        window.onload = loadSavedData;
     </script>
 </head>
 <body>
     <div class="container">
         <h1>Edit Domain</h1>
-        <form onsubmit="showMessage(event)">
+        <form onsubmit="saveChanges(event)">
             <div class="form-group">
                 <label for="domain-name">Domain Name:</label>
                 <input type="text" id="domain-name" name="domain-name" placeholder="Enter new domain name">
