@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's New</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            width: 50%;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #555;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            color: white;
+        }
+        .btn:hover {
+            background-color: #777;
+        }
+        .update-box {
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        .update-box h2 {
+            margin: 0 0 10px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>What's New</h1>
+        <div class="updates">
+            <div class="update-box">
+                <h2>Update 1:</h2>
+                <p>We have improved the domain management interface for better user experience.</p>
+            </div>
+            <div class="update-box">
+                <h2>Update 2:</h2>
+                <p>A new feature has been added that allows you to edit domain settings more easily.</p>
+            </div>
+            <div class="update-box">
+                <h2>Update 3:</h2>
+                <p>Bug fixes and performance improvements.</p>
+            </div>
+        </div>
+        <button class="btn" onclick="window.location.href='/studio/login'">Go Back Home</button>
+    </div>
+</body>
+</html>
