@@ -1,223 +1,88 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Pagina</title>
+    <title>Login</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #121212;
+            background-color: black;
             color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
         }
         .login-container {
-            background: #1e1e1e;
-            padding: 2rem;
+            margin: 100px auto;
+            padding: 40px;
+            background-color: #222;
+            width: 400px;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
-            text-align: center;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
         }
         input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            display: block;
+            margin: 15px auto;
+            padding: 12px;
+            width: 90%;
             background-color: #333;
-            color: white;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #444;
             color: white;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
             font-size: 16px;
-            transition: background 0.3s ease;
+        }
+        button {
+            background-color: gray;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 5px;
         }
         button:hover {
-            background-color: #666;
+            background-color: #555;
         }
-        a {
-            color: #bbb;
+        .extra-text {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .extra-text a {
+            color: white;
             text-decoration: none;
         }
-        a:hover {
-            color: white;
+        .extra-text a:hover {
+            text-decoration: underline;
         }
     </style>
+    <script>
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            
+            if (username === "admin" && password === "1234") {
+                document.cookie = "loggedInUser1";
+                window.location.href = "/studio/user/196477y384uUe83-9838-3849493075957893849349387/menu";
+            } else if (username === "user2" && password === "password2") {
+                document.cookie = "user=test2";
+                window.location.href = "test123.html";
+            } else {
+                alert("Invalid username or password");
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form onsubmit="return checkLogin()">
-            <input type="text" id="username" name="username" placeholder="Username" required>
-            <input type="password" id="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <div class="extra-text">
             <p><a href="/plan">No account? Then buy a plan!</a></p>
             <p><a href="/">HOME</a></p>
-        </form>
+        </div>
     </div>
-
-    <script>
-        function setCookie(name, value, days) {
-            let expires = "";
-            if (days) {
-                const date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + value + "; path=/" + expires;
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        function checkLogin() {
-            const users = {
-                'admin': { password: '1234', redirect: '/studio/user/196477y384uUe83-9838-3849493075957893849349387/menu' },
-                'finn2013': { password: '1234Finn1234.', redirect: '/studio/user/536678049ty876redhgfy7857-38723965838093579303756fhuf/menu' },
-                'dean': { password: 'wachtwoord123', redirect: '/studio/menu' }
-            };
-
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            if (users[username] && users[username].password === password) {
-                setCookie("loggedInUser1", username, 1);
-                window.location.href = users[username].redirect;
-                return false;
-            } else {
-                alert('Invalid username or password');
-                return false;
-            }
-        }
-    </script>
 </body>
 </html>
