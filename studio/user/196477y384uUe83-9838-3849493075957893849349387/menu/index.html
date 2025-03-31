@@ -1,16 +1,72 @@
-<script>
-    function getCookie(name) {
-        const cookies = document.cookie.split('; ');
-        for (let cookie of cookies) {
-            let [key, value] = cookie.split('=');
-            if (key === name) return value;
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Studio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #121212;
+            text-align: center;
+            color: white;
         }
-        return null;
-    }
+        .container {
+            background: #1e1e1e;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+            background-color: #444;
+            color: white;
+        }
+        button:hover {
+            background-color: #666;
+        }
+    </style>
+    <script>
+        function getCookie(name) {
+            const cookies = document.cookie.split('; ');
+            for (let cookie of cookies) {
+                let [key, value] = cookie.split('=');
+                if (key === name) return value;
+            }
+            return null;
+        }
 
-    window.onload = function() {
-        if (!getCookie("loggedInUser1")) {
-            window.location.href = "/studio/login";  // Alleen doorgaan als de cookie loggedInUser1 bestaat
-        }
-    };
-</script>
+        window.onload = function() {
+            // Controleer of de cookie 'loggedInUser1' aanwezig is
+            if (!getCookie("loggedInUser1")) {
+                // Als de cookie niet aanwezig is, doorsturen naar de loginpagina
+                window.location.href = "/studio/login";
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="button-container">
+            <button onclick="location.href='/studio/user/196477y384uUe83-9838-3849493075957893849349387/website'">Go to Website page</button>
+            <button onclick="location.href='/studio/user/196477y384uUe83-9838-3849493075957893849349387/domains'">Edit sub domain</button>
+            <button onclick="location.href='/studio/user/196477y384uUe83-9838-3849493075957893849349387/minecraft-stats'">Minecraft server</button>
+            <button onclick="location.href='/studio/user/196477y384uUe83-9838-3849493075957893849349387/update'">New update</button>
+        </div>
+    </div>
+</body>
+</html>
