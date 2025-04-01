@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Menu</title>
+    <title>Your studio!</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,6 +50,11 @@
             return null;
         }
 
+        function logout() {
+            document.cookie = "loggedInUser1=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+            window.location.href = "/studio/login";
+        }
+
         window.onload = function() {
             if (!getCookie("loggedInUser1")) {
                 window.location.href = "/studio/login";
@@ -61,10 +66,11 @@
     <div class="container">
         <h1>Admin Menu</h1>
         <div class="button-container">
-            <button onclick="location.href='/studio/user/website'">Go to Website page</button>
-            <button onclick="location.href='/studio/user/domains'">Edit sub domain</button>
-            <button onclick="location.href='/studio/user/minecraft-stats'">Minecraft server</button>
-            <button onclick="location.href='/studio/user/update'">New update</button>
+            <button onclick="location.href='/studio/user196477y384uUe83-9838-3849493075957893849349387/website'">Go to Website page</button>
+            <button onclick="location.href='/studio/user/196477y384uUe83-9838-3849493075957893849349387/domains'">Edit sub domain</button>
+            <button onclick="location.href='/studio/user/196477y384uUe83-9838-3849493075957893849349387/minecraft-stats'">Minecraft server</button>
+            <button onclick="location.href='/studio/user/196477y384uUe83-9838-3849493075957893849349387/update'">New update</button>
+            <button onclick="logout()">Logout</button>
         </div>
     </div>
 </body>
