@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Studio</title>
+    <title>Admin Menu</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -51,9 +51,7 @@
         }
 
         window.onload = function() {
-            // Controleer of de cookie 'loggedInUser1' aanwezig is
             if (!getCookie("loggedInUser1")) {
-                // Als de cookie niet aanwezig is, doorsturen naar de loginpagina
                 window.location.href = "/studio/login";
             }
         };
@@ -61,11 +59,12 @@
 </head>
 <body>
     <div class="container">
+        <h1>Admin Menu</h1>
         <div class="button-container">
-            <button onclick="location.href='/studio/user/196477y384uUe83-9838-3849493075957893849349387/website'">Go to Website page</button>
-            <button onclick="location.href='/studio/user/196477y384uUe83-9838-3849493075957893849349387/domains'">Edit sub domain</button>
-            <button onclick="location.href='/studio/user/196477y384uUe83-9838-3849493075957893849349387/minecraft-stats'">Minecraft server</button>
-            <button onclick="location.href='/studio/user/196477y384uUe83-9838-3849493075957893849349387/update'">New update</button>
+            <button onclick="location.href='/studio/user/website'">Go to Website page</button>
+            <button onclick="location.href='/studio/user/domains'">Edit sub domain</button>
+            <button onclick="location.href='/studio/user/minecraft-stats'">Minecraft server</button>
+            <button onclick="location.href='/studio/user/update'">New update</button>
         </div>
     </div>
 </body>
