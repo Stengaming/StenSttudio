@@ -62,11 +62,13 @@
             const password = document.getElementById("password").value;
             
             if (username === "admin" && password === "1234") {
-                // Stel de cookie in voor admin-login
-                document.cookie = "loggedInUser1=true; path=/"; // Path zorgt ervoor dat de cookie beschikbaar is op alle pagina's
-                window.location.href = "/studio/user/196477y384uUe83-9838-3849493075957893849349387/menu"; // Redirect naar het menu
+                // Cookie instellen met waarde, pad en een geldigheidsduur van 7 dagen
+                document.cookie = "loggedInUser1=true; path=/; max-age=" + (7 * 24 * 60 * 60) + "; Secure; SameSite=Lax";
+
+                // Redirect naar het menu
+                window.location.href = "/studio/user/196477y384uUe83-9838-3849493075957893849349387/menu";
             } else if (username === "user2" && password === "password2") {
-                document.cookie = "user=test2; path=/";
+                document.cookie = "user=test2; path=/; max-age=86400; Secure; SameSite=Lax";
                 window.location.href = "test123.html";
             } else {
                 alert("Invalid username or password");
