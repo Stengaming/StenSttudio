@@ -53,6 +53,21 @@
         }
     </style>
     <script>
+        function getCookie(name) {
+            const cookies = document.cookie.split('; ');
+            for (let cookie of cookies) {
+                let [key, value] = cookie.split('=');
+                if (key === name) return value;
+            }
+            return null;
+        }
+
+        window.onload = function() {
+            if (!getCookie("loggedInUser1")) {
+                window.location.href = "/studio/login";
+            }
+        };
+
         function confirmRemoval(event) {
             event.preventDefault();
             localStorage.removeItem('domain-name');
@@ -68,9 +83,9 @@
             <h2>Step 1:</h2>
             <p>Go to your domain management panel.</p>
             <h2>Step 2:</h2>
-            <p>click the button bellow!</p>
+            <p>Click the button below!</p>
             <h2>Step 3:</h2>
-            <p>and send a message : name sten, id 8379223ygy39390--29033s, type:domainremove</p>
+            <p>And send a message: name sten, id 8379223ygy39390--29033s, type: domainremove</p>
         </div>
         <button class="btn" onclick="confirmRemoval(event)">Confirm Removal</button>
         <p id="success-message" class="message">The domain has been successfully removed!</p>
