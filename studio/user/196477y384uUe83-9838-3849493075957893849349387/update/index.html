@@ -50,6 +50,27 @@
             color: white;
         }
     </style>
+    <script>
+        function getCookie(name) {
+            const cookies = document.cookie.split('; ');
+            for (let cookie of cookies) {
+                let [key, value] = cookie.split('=');
+                if (key === name) return value;
+            }
+            return null;
+        }
+
+        function logout() {
+            document.cookie = "loggedInUser1=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+            window.location.href = "/studio/login";
+        }
+
+        window.onload = function() {
+            if (!getCookie("loggedInUser1")) {
+                window.location.href = "/studio/login";
+            }
+        };
+    </script>
 </head>
 <body>
     <div class="container">
@@ -69,6 +90,7 @@
             </div>
         </div>
         <button class="btn" onclick="window.location.href='/studio/login'">Go Back Home</button>
+        <button class="btn" onclick="logout()">Logout</button>
     </div>
 </body>
 </html>
