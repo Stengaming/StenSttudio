@@ -92,7 +92,7 @@
             let user = document.getElementById("login-user").value;
             let pass = document.getElementById("login-pass").value;
 
-            fetch('/studio/login/check_login.php', {
+            fetch('studio/login/check_login.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username: user, password: pass })
