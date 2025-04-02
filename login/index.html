@@ -1,48 +1,51 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="Ontwerp zonder titel.png" type="image/Ontwerp zonder titel.png">
-    <title>Login Admin</title>
+    <title>Studio Login</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: #121212;
             font-family: 'Poppins', sans-serif;
+            color: white;
         }
         .container {
-            background: white;
+            background: #1e1e1e;
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
             text-align: center;
             width: 350px;
         }
         h2 {
-            color: #333;
+            color: white;
         }
         input {
             width: 100%;
             padding: 12px;
             margin: 10px 0;
-            border: 2px solid #ddd;
+            border: 2px solid #333;
+            background: #2c2c2c;
+            color: white;
             border-radius: 8px;
             font-size: 16px;
             outline: none;
             transition: 0.3s;
         }
         input:focus {
-            border-color: #667eea;
+            border-color: #666;
         }
         button {
             width: 100%;
             padding: 12px;
-            background: #667eea;
+            background: #444;
             color: white;
             border: none;
             border-radius: 8px;
@@ -51,86 +54,58 @@
             transition: 0.3s;
         }
         button:hover {
-            background: #764ba2;
+            background: #666;
+        }
+        .home {
+            margin-top: 20px;
+            color: #bbb;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .home:hover {
+            color: white;
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="container" id="login-container">
-        <h2>Admin Login</h2>
-        <input type="text" id="login-user" placeholder="Gebruikersnaam" required>
-        <input type="password" id="login-pass" placeholder="Wachtwoord" required>
-        <button onclick="login()">Inloggen</button>
+    <div class="container">
+        <h2>Login</h2>
+        <input type="text" id="login-user" placeholder="Username" required>
+        <input type="password" id="login-pass" placeholder="Password" required>
+        <button onclick="login()">Login</button>
     </div>
-
+    <a href="/plan" class="">No account? Then buy a plan!</a>
+<a href="/" class="home">Home</a>
     <script>
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                let date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + value + "; path=/" + expires;
+        }
+
         function login() {
             let user = document.getElementById("login-user").value;
             let pass = document.getElementById("login-pass").value;
 
-           
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-            
-            const users = {
-                "admin": "1234",
-                "sten": "Stenhoogterp.2013",
-                "sten": "Stenhoogterp2013!"
-            };
-            
-            if (users[user] && users[user] === pass) {
-                sessionStorage.setItem("loggedIn", true);
-                window.location.href = "/dashboard/dashboard.html";
-            } else {
-                alert("Ongeldige inloggegevens!");
-            }
+            fetch('check_login.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: user, password: pass })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    setCookie("user", user, 1); // Cookie for 1 day
+                    window.location.href = data.redirect;
+                } else {
+                    alert("Invalid login credentials!");
+                }
+            });
         }
     </script>
 </body>
