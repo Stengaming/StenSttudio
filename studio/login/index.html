@@ -61,19 +61,22 @@
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
 
-            // Eerst de test.html pagina inladen om de login-gegevens op te halen
+            // De gegevens worden geladen van de test.html
             const iframe = document.createElement("iframe");
-            iframe.src = "/studio/login/test.html";
+            iframe.src = "test.html";
             iframe.style.display = "none";
             document.body.appendChild(iframe);
 
             iframe.onload = function() {
-                // Nadat de test.html is geladen, zoeken we naar de gebruikersgegevens
+                // Na het laden van de test.html, kijken we naar de gebruikersgegevens
                 const users = iframe.contentWindow.users;
                 const user = users.find(u => u.username === username && u.password === password);
 
                 if (user) {
-                    document.cookie = "loggedIn=true; path=/; max-age=604800; Secure; SameSite=Lax";
+                    // Maak een unieke cookie voor de gebruiker
+                    document.cookie = `username=${username}; path=/; max-age=604800; Secure; SameSite=Lax`;
+                    
+                    // Redirect naar de gebruikerspagina
                     window.location.href = user.redirect;
                 } else {
                     alert("Invalid username or password");
