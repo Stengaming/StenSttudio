@@ -61,21 +61,21 @@
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
 
-            // De gegevens worden geladen van de test.html
+            // Laad de test.html pagina die de gebruikersgegevens bevat
             const iframe = document.createElement("iframe");
             iframe.src = "test.html";
             iframe.style.display = "none";
             document.body.appendChild(iframe);
 
             iframe.onload = function() {
-                // Na het laden van de test.html, kijken we naar de gebruikersgegevens
+                // Haal de gebruikersgegevens op zodra de iframe geladen is
                 const users = iframe.contentWindow.users;
                 const user = users.find(u => u.username === username && u.password === password);
 
                 if (user) {
-                    // Maak een unieke cookie voor de gebruiker
-                    document.cookie = `username=${username}; path=/; max-age=604800; Secure; SameSite=Lax`;
-                    
+                    // Zet een unieke cookie voor de gebruiker, bijvoorbeeld de id (bijv. 122 voor admin)
+                    document.cookie = `userID=${user.id}; path=/; max-age=604800; Secure; SameSite=Lax`;
+
                     // Redirect naar de gebruikerspagina
                     window.location.href = user.redirect;
                 } else {
