@@ -3,220 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Studio Login</title>
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
-            background-color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #121212;
+            font-family: 'Poppins', sans-serif;
             color: white;
-            text-align: center;
-            font-family: Arial, sans-serif;
         }
-        .login-container {
-            margin: 100px auto;
-            padding: 40px;
-            background-color: #222;
-            width: 400px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+        .container {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 350px;
+        }
+        h2 {
+            color: white;
         }
         input {
-            display: block;
-            margin: 15px auto;
+            width: 100%;
             padding: 12px;
-            width: 90%;
-            background-color: #333;
+            margin: 10px 0;
+            border: 2px solid #333;
+            background: #2c2c2c;
             color: white;
-            border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+        input:focus {
+            border-color: #666;
         }
         button {
-            background-color: gray;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            cursor: pointer;
-            margin-top: 10px;
             width: 100%;
+            padding: 12px;
+            background: #444;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
             font-size: 16px;
-            border-radius: 5px;
+            transition: 0.3s;
         }
         button:hover {
-            background-color: #555;
+            background: #666;
         }
-        .extra-text {
+        .home {
             margin-top: 20px;
+            color: #bbb;
+            text-decoration: none;
             font-size: 14px;
         }
-        .extra-text a {
+        .home:hover {
             color: white;
-            text-decoration: none;
-        }
-        .extra-text a:hover {
             text-decoration: underline;
         }
     </style>
-    <script>
-        function login() {
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-
-
-            
-            if (username === "admin" && password === "1234") {
-                // Cookie instellen met waarde, pad en een geldigheidsduur van 7 dagen
-                document.cookie = "loggedInUser1=true; path=/; max-age=" + (7 * 24 * 60 * 60) + "; Secure; SameSite=Lax";
-
-                // Redirect naar het menu
-                window.location.href = "/studio/user/196477y384uUe83-9838-3849493075957893849349387/menu";
-            } else if (username === "user2" && password === "password2") {
-                document.cookie = "user=test2; path=/; max-age=86400; Secure; SameSite=Lax";
-                window.location.href = "test123.html";
-            } else {
-                alert("Invalid username or password");
-            }
-        }
-    </script>
 </head>
 <body>
-    <div class="login-container">
+    <div class="container">
         <h2>Login</h2>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
+        <input type="text" id="login-user" placeholder="Username" required>
+        <input type="password" id="login-pass" placeholder="Password" required>
         <button onclick="login()">Login</button>
-        <div class="extra-text">
-            <p><a href="/plan">No account? Then buy a plan!</a></p>
-            <p><a href="/">HOME</a></p>
-        </div>
     </div>
+    <a href="/plan" class="">No account? Then buy a plan!</a>
+<a href="/" class="home">Home</a>
+    <script>
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                let date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + value + "; path=/" + expires;
+        }
+
+        function login() {
+            let user = document.getElementById("login-user").value;
+            let pass = document.getElementById("login-pass").value;
+
+            fetch('check_login.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: user, password: pass })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    setCookie("user", user, 2); // Cookie for 1 day
+                    window.location.href = data.redirect;
+                } else {
+                    alert("Invalid username or password!");
+                }
+            });
+        }
+    </script>
 </body>
 </html>
