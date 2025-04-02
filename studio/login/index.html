@@ -57,39 +57,38 @@
         }
     </style>
     <script>
+        // Gebruikersgegevens (in productie zou dit server-side moeten gebeuren)
+        const users = [
+            { username: "admin", password: "1234", id: "122", redirect: "/studio/user/admin/menu" },
+            { username: "user2", password: "password2", id: "123", redirect: "test123.html" }
+        ];
+
+        // Functie om de login te verwerken
         function login() {
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
 
-            // Laad de test.html pagina die de gebruikersgegevens bevat
-            const iframe = document.createElement("iframe");
-            iframe.src = "/studio/login/test.html";
-            iframe.style.display = "none";
-            document.body.appendChild(iframe);
+            // Zoek naar de gebruiker die overeenkomt met de ingevoerde gegevens
+            const user = users.find(u => u.username === username && u.password === password);
 
-            iframe.onload = function() {
-                // Haal de gebruikersgegevens op zodra de iframe geladen is
-                const users = iframe.contentWindow.users;
-                const user = users.find(u => u.username === username && u.password === password);
+            if (user) {
+                // Zet een unieke cookie voor de gebruiker, bijvoorbeeld de id (bijv. 122 voor admin)
+                document.cookie = `userID=${user.id}; path=/; max-age=604800; Secure; SameSite=Lax`;
 
-                if (user) {
-                    // Zet een unieke cookie voor de gebruiker, bijvoorbeeld de id (bijv. 122 voor admin)
-                    document.cookie = `userID=${user.id}; path=/; max-age=604800; Secure; SameSite=Lax`;
-
-                    // Redirect naar de gebruikerspagina
-                    window.location.href = user.redirect;
-                } else {
-                    alert("Invalid username or password");
-                }
-            };
+                // Redirect naar de gebruikerspagina
+                window.location.href = user.redirect;
+            } else {
+                alert("Invalid username or password");
+            }
         }
     </script>
 </head>
 <body>
     <div class="login-container">
         <h2>Login</h2>
+        <!-- Gebruikersnaam en wachtwoord invoervelden -->
         <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
+        <input type="password" id="password" placeholder="Password"> <!-- Het wachtwoord is verborgen -->
         <button onclick="login()">Login</button>
         <div class="extra-text">
             <p><a href="/plan">No account? Then buy a plan!</a></p>
